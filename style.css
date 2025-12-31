@@ -38,6 +38,12 @@ body {
   opacity: 0.6;
 }
 
+.heart {
+  font-size: 30px;
+  margin-top: 10px;
+  animation: pulse 1.2s infinite;
+}
+
 #play-btn {
   margin: 18px auto;
   padding: 14px 26px;
@@ -68,6 +74,13 @@ body {
 @keyframes fade {
   from { opacity: 0; }
   to { opacity: 1; }
+}
+/* Floating hearts */
+.heart-float {
+  position: fixed;
+  bottom: -20px;
+  font-size: 18px;
+  animation: floatUp 6s linear infinite;
 }
 
 
