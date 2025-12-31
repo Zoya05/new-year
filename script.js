@@ -2,7 +2,9 @@
    HOLD TO REVEAL (index.html)
 ================================ */
 
-let timer;
+let holdTimer;
+let heartInterval = null;
+
 const box = document.getElementById("box");
 
 if (box) {
@@ -15,8 +17,7 @@ if (box) {
 }
 
 function startHold() {
-  timer = setTimeout(() => {
-     
+  holdTimer = setTimeout(() => {
     box.innerHTML = `
       <p class="reveal">
         𝐌𝐲 𝐋𝐨𝐯𝐞.... 𝐈 𝐰𝐚𝐧𝐭 𝐭𝐨 𝐬𝐭𝐚𝐫𝐭 𝐦𝐲 𝐟𝐢𝐫𝐬𝐭 𝐦𝐨𝐦𝐞𝐧𝐭 𝐨𝐟 𝐧𝐞𝐰 𝐲𝐞𝐚𝐫 𝐰𝐢𝐭𝐡 𝐘𝐨𝐮 💌💋❣️<br>
@@ -39,14 +40,12 @@ function startHold() {
 }
 
 function cancelHold() {
-  clearTimeout(timer);
+  clearTimeout(holdTimer);
 }
 
 /* ===============================
-   FLOATING HEARTS CONTROL
+   FLOATING HEARTS
 ================================ */
-
-let heartInterval = null;
 
 function createHeart() {
   const heart = document.createElement("div");
@@ -61,12 +60,17 @@ function createHeart() {
 
 function startHearts() {
   if (!heartInterval) {
-     heartInterval = setInterval(createHeart, 500);
+    heartInterval = setInterval(createHeart, 500);
   }
-}   
+}
+
+function stopHearts() {
+  clearInterval(heartInterval);
+  heartInterval = null;
+}
 
 /* ===============================
-   MEMORIES PAGE LOGIC
+   MEMORIES PAGE
 ================================ */
 
 const playBtn = document.getElementById("playBtn");
@@ -77,9 +81,9 @@ const yearTitle = document.getElementById("yearTitle");
 
 const albums = [
   { year: "2020", photos: ["photos 2020 1.jpg"] },
-  { year: "2023", photos: ["photos 2023 1.jpg", "photos 2023 2.jpg","photos 2023 3.jpg","photos 2023 4.jpg","photos 2023 5.jpg"] },
+  { year: "2023", photos: ["photos 2023 1.jpg","photos 2023 2.jpg","photos 2023 3.jpg","photos 2023 4.jpg","photos 2023 5.jpg"] },
   { year: "2024", photos: ["photos 2024 1.jpg","photos 2024 2.jpg","photos 2024 3.jpg","photos 2024 4.jpg","photos 2024 5.jpg"] },
-  { year: "2025", photos: ["photos 2025 1.jpg", "photos 2025 2.jpg","photos 2025 3.jpg","photos 2025 4.jpg"] }
+  { year: "2025", photos: ["photos 2025 1.jpg","photos 2025 2.jpg","photos 2025 3.jpg","photos 2025 4.jpg"] }
 ];
 
 let albumIndex = 0;
@@ -88,20 +92,20 @@ let photoIndex = 0;
 if (playBtn) {
   playBtn.onclick = () => {
     playBtn.style.display = "none";
-    heartsEnabled = false; // STOP hearts during video
+    stopHearts();                 // STOP hearts during video
     video.style.display = "block";
     video.play();
 
     if (video.requestFullscreen) video.requestFullscreen();
+    else if (video.webkitEnterFullscreen) video.webkitEnterFullscreen();
   };
 }
 
 if (video) {
   video.onended = () => {
     video.style.display = "none";
-    if (music) music.play(); // RESUME hearts
-     
-    startHearts();
+    if (music) music.play();      // START music
+    startHearts();                // RESUME hearts
     showNextPhoto();
   };
 }
@@ -124,6 +128,7 @@ function showNextPhoto() {
 
   setTimeout(showNextPhoto, 3000);
 }
+
 
 
 
