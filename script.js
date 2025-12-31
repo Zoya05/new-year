@@ -9,7 +9,7 @@ const box = document.getElementById("box");
 
 if (box) {
   box.addEventListener("mousedown", startHold);
-  box.addEventListener("touchstart", startHold);
+  box.addEventListener("touchstart", startHold, { passive: true });
 
   box.addEventListener("mouseup", cancelHold);
   box.addEventListener("mouseleave", cancelHold);
@@ -26,13 +26,10 @@ function startHold() {
         𝐀𝐥𝐰𝐚𝐲𝐬 𝐌𝐮𝐌𝐮 & 𝐙𝐮𝐙𝐮🤍<br><br>
         <span style="font-size:18px;opacity:0.7;">— From Zo 💌</span>
       </p>
-
       <br><br>
       <a href="memories.html" style="color:white;text-decoration:none;">
         Tap here 🤍
       </a>
-
-      <div class="heart">💗</div>
     `;
 
     startHearts();
@@ -73,10 +70,10 @@ function stopHearts() {
    MEMORIES PAGE
 ================================ */
 
-const playBtn = document.getElementById("playBtn");
+const playBtn = document.getElementById("play-btn");     // ✅ fixed
 const video = document.getElementById("intro-video");
 const music = document.getElementById("bg-music");
-const img = document.getElementById("viewer-img");
+const img = document.getElementById("album-img");       // ✅ fixed
 const yearTitle = document.getElementById("yearTitle");
 
 const albums = [
@@ -89,10 +86,15 @@ const albums = [
 let albumIndex = 0;
 let photoIndex = 0;
 
+/* Start hearts automatically on memories page */
+if (document.body.contains(playBtn)) {
+  startHearts();
+}
+
 if (playBtn) {
   playBtn.onclick = () => {
     playBtn.style.display = "none";
-    stopHearts();                 // STOP hearts during video
+    stopHearts();                 // ❌ stop hearts during video
     video.style.display = "block";
     video.play();
 
@@ -104,8 +106,8 @@ if (playBtn) {
 if (video) {
   video.onended = () => {
     video.style.display = "none";
-    if (music) music.play();      // START music
-    startHearts();                // RESUME hearts
+    if (music) music.play();
+    startHearts();                // ✅ resume hearts
     showNextPhoto();
   };
 }
@@ -128,6 +130,8 @@ function showNextPhoto() {
 
   setTimeout(showNextPhoto, 3000);
 }
+
+
 
 
 
