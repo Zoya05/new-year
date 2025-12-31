@@ -62,7 +62,7 @@ body {
   100% { transform: translateY(-100vh); opacity: 0; }
 }
 
-#playBtn {
+#play-Btn {
   margin: 18px auto;
   padding: 12px 30px;
   font-size: 17px;
@@ -87,8 +87,14 @@ body {
   border-radius: 18px;
   display: none;
   animation: fade 1.2s ease;
-
 }
+
+#yearTitle {
+  margin: 15px 0;
+  font-size: 20px;
+  opacity: 0.8;
+}
+
 
 
 
