@@ -86,11 +86,6 @@ const albums = [
 let albumIndex = 0;
 let photoIndex = 0;
 
-/* Start hearts automatically on memories page */
-if (document.body.contains(playBtn)) {
-  startHearts();
-}
-
 if (playBtn) {
   playBtn.onclick = () => {
     playBtn.style.display = "none";
@@ -130,6 +125,7 @@ function showNextPhoto() {
 
   setTimeout(showNextPhoto, 3000);
 }
+
 
 
 
