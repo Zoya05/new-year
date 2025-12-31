@@ -62,7 +62,7 @@ body {
   100% { transform: translateY(-100vh); opacity: 0; }
 }
 
-#play-Btn {
+#play-btn {
   margin: 18px auto;
   padding: 12px 30px;
   font-size: 17px;
@@ -94,6 +94,7 @@ body {
   font-size: 20px;
   opacity: 0.8;
 }
+
 
 
 
