@@ -1,9 +1,8 @@
+/* ===============================
    HOLD TO REVEAL (index.html)
 ================================ */
 
 let timer;
-let heartsEnabled = false;
-
 const box = document.getElementById("box");
 
 if (box) {
@@ -17,8 +16,7 @@ if (box) {
 
 function startHold() {
   timer = setTimeout(() => {
-    heartsEnabled = true;
-
+     
     box.innerHTML = `
       <p class="reveal">
         𝐌𝐲 𝐋𝐨𝐯𝐞.... 𝐈 𝐰𝐚𝐧𝐭 𝐭𝐨 𝐬𝐭𝐚𝐫𝐭 𝐦𝐲 𝐟𝐢𝐫𝐬𝐭 𝐦𝐨𝐦𝐞𝐧𝐭 𝐨𝐟 𝐧𝐞𝐰 𝐲𝐞𝐚𝐫 𝐰𝐢𝐭𝐡 𝐘𝐨𝐮 💌💋❣️<br>
@@ -48,10 +46,9 @@ function cancelHold() {
    FLOATING HEARTS CONTROL
 ================================ */
 
+let heartInterval = null;
 
 function createHeart() {
-  if (!heartsEnabled) return;
-
   const heart = document.createElement("div");
   heart.className = "heart-float";
   heart.innerText = "💗";
@@ -62,7 +59,11 @@ function createHeart() {
   setTimeout(() => heart.remove(), 6000);
 }
 
-setInterval(createHeart, 500);
+function startHearts() {
+  if (!heartInterval) {
+     heartInterval = setInterval(createHeart, 500);
+  }
+}   
 
 /* ===============================
    MEMORIES PAGE LOGIC
@@ -98,8 +99,9 @@ if (playBtn) {
 if (video) {
   video.onended = () => {
     video.style.display = "none";
-    heartsEnabled = true; // RESUME hearts
-    music.play();
+    if (music) music.play(); // RESUME hearts
+     
+    startHearts();
     showNextPhoto();
   };
 }
@@ -122,5 +124,6 @@ function showNextPhoto() {
 
   setTimeout(showNextPhoto, 3000);
 }
+
 
 
