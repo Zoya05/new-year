@@ -1,0 +1,74 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.container {
+  padding: 20px;
+}
+
+.big {
+  font-size: 22px;
+}
+
+.hint {
+  margin-top: 12px;
+  opacity: 0.6;
+}
+
+.reveal {
+  font-size: 24px;
+  animation: fade 1.2s ease;
+}
+
+.small {
+  margin-top: 20px;
+  opacity: 0.6;
+}
+
+#play-btn {
+  margin: 18px auto;
+  padding: 14px 26px;
+  font-size: 17px;
+  border-radius: 30px;
+  border: none;
+  background: white;
+  color: #ff5c8a;
+  cursor: pointer;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+}
+
+#intro-video {
+  width: 100%;
+  max-width: 420px;
+  border-radius: 18px;
+  display: none;
+}
+
+#album-img {
+  width: 90%;
+  max-width: 360px;
+  border-radius: 18px;
+  display: none;
+  animation: fade 1.2s ease;
+}
+
+@keyframes fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+
+
