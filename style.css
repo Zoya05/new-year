@@ -62,7 +62,7 @@ body {
   100% { transform: translateY(-100vh); opacity: 0; }
 }
 
-#play-btn {
+#playBtn {
   margin: 18px auto;
   padding: 12px 30px;
   font-size: 17px;
@@ -81,13 +81,15 @@ body {
   display: none;
 }
 
-#album-img {
+#viewer-img {
   width: 90%;
   max-width: 360px;
   border-radius: 18px;
   display: none;
   animation: fade 1.2s ease;
+
 }
+
 
 
 
