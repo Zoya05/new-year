@@ -81,7 +81,7 @@ body {
   display: none;
 }
 
-#viewer-img {
+#album-img {
   width: 90%;
   max-width: 360px;
   border-radius: 18px;
@@ -89,6 +89,7 @@ body {
   animation: fade 1.2s ease;
 
 }
+
 
 
 
