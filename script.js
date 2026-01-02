@@ -78,8 +78,8 @@ const yearTitle = document.getElementById("yearTitle");
 
 const albums = [
   { year: "2020", photos: ["photos 2020 1.jpg"] },
-  { year: "2023", photos: ["photos 2023 1.jpg","photos 2023 2.jpg","photos 2023 3.jpg","photos 2023 4.jpg","photos 2023 5.jpg"] },
-  { year: "2024", photos: ["photos 2024 1.jpg","photos 2024 2.jpg","photos 2024 3.jpg","photos 2024 4.jpg","photos 2024 5.jpg"] },
+  { year: "2023", photos: ["photos 2023 1.jpg","photos 2023 2.jpg","photos 2023 3.jpg","photos 2023 4.jpg"] },
+  { year: "2024", photos: ["photos 2024 1.jpg","photos 2024 2.jpg","photos 2024 3.jpg","photos 2024 4.jpg"] },
   { year: "2025", photos: ["photos 2025 1.jpg","photos 2025 2.jpg","photos 2025 3.jpg","photos 2025 4.jpg"] }
 ];
 
@@ -125,6 +125,7 @@ function showNextPhoto() {
 
   setTimeout(showNextPhoto, 3000);
 }
+
 
 
 
